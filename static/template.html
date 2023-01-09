@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, myself-scalable=no">
+
+		<title>微信年度报告</title>
+
+		<link rel="shortcut icon" href="static/favicon.ico">
+		<link rel="stylesheet" href="static/reveal.css">
+		<link rel="stylesheet" href="static/black.css">
+		<link rel="stylesheet" href="static/report.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <section>
+
+          <section data-background-image="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v760-toon-53_3_0.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=c44e033467654f9344de1cb2b0b26b88" data-background-opacity="0.2">
+            <h1 class="chapter">启程</h1>
+            <p class="intro">Hi，{{ myself.name }}</p>
+            <div class="openup">
+              <p>2022年已悄然飞奔而逝</p>
+              <p>微信与你相伴走过<span class="number">{{ myself.active_days }}</span>天</p>
+              <p>请查收这份专属于你的</p>
+              <p class="top">《微信年度报告》</p>
+            </div>
+            <br>
+            <br>
+            <div class="hint">
+              <p>上滑开启</p>
+            </div>
+          </section>
+
+          <section data-background-image="https://pic.3gbizhi.com/2016/1106/20161106023833812.jpg" data-background-opacity="0.3">
+            <h1 class="chapter">会话</h1>
+            <p class="intro">过去一年，你</p>
+            <p>共处理会话<span class="number">{{ myself.session.count }}</span>个</p>
+            <p>聊天列表打印出来有<span class="number">{{ "{:.1f}".format(myself.session.count / 165)}}</span>人高</p>
+            {% if myself.session.count_group > myself.session.count_friend %}
+            <p>群聊占比<span class="number">{{ "{:.0f}".format(myself.session.pct_group*100) }}</span>%，热热闹闹</p>
+            {% else %}
+            <p>私聊占比<span class="number">{{ "{:.0f}".format(myself.session.pct_friend*100) }}</span>%，友邻多多</p>
+            {% endif %}
+            <br>
+            <blockquote>每一次点开未读，都是迎接惊喜</blockquote>
+          </section>
+
+          <section data-background-image="https://pic.3gbizhi.com/2016/1106/20161106023833812.jpg" data-background-opacity="0.3">
+            <h1 class="chapter">消息</h1>
+            <p class="intro">聊天框右侧，你</p>
+            <p>共发送消息<span class="number">{{ myself.message.count }}</span>条</p>
+            <p>累计发送<span class="number">{{ myself.message.word_count }}</span>万字</p>
+            {% if myself.message.word_count < 50000 %}
+            <p>相当于<span class="number">{{ "{:.1f}".format(myself.message.word_count / 8000) }}</span>部短篇小说</p>
+            {% elif myself.message.word_count < 150000 %}
+            <p>相当于<span class="number">{{ "{:.1f}".format(myself.message.word_count / 30000) }}</span>部中篇小说</p>
+            {% else %}
+            <p>相当于<span class="number">{{ "{:.1f}".format(myself.message.word_count / 100000) }}</span>部长篇小说</p>
+            {% endif %}
+            <br>
+            <blockquote>电子比特，化身爱与希望，飞往远方</blockquote>
+          </section>
+
+          <section data-background-image="https://pic.3gbizhi.com/2016/1106/20161106023833812.jpg" data-background-opacity="0.3">
+            <h1 class="chapter">表情</h1>
+            <p class="intro">你最青睐的表情是
+              <img class="top" src="{{ myself.emoji[0].url }}">
+            </p>
+            <p>在<span class="number">{{ myself.emoji[0].chat }}</span>个聊天中使用了<span class="number">{{ myself.emoji[0].count }}</span>次</p>
+            <p class="intro">以及这些常用表情</p>
+            <p>
+              {% for e in myself.emoji[1:] %}
+              <img class="inline" src="{{ e.url }}"> x{{ e.count }}
+              {% endfor %}
+            </p>
+            <br>
+            <blockquote>自定义表情，自定义心情</blockquote>
+          </section>
+
+          <section data-background-image="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm134-kul-08_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1400&s=617a128447cdbaadcfcfa41828927036" data-background-opacity="0.2">
+            <h1 class="chapter">相识</h1>
+            <p class="intro">通讯录里，你</p>
+            <p>新结交了<span class="number">{{ friend.new.count }}</span>位朋友</p>
+            <p>新加入了<span class="number">{{ group.new.count }}</span>个群聊</p>
+            <p>潜在人脉大约有<span class="number">{{ group.new.connection }}</span>人</p>
+            <br>
+            <blockquote>缘，妙不可言</blockquote>
+          </section>
+
+          <section data-background-image="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm134-kul-08_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1400&s=617a128447cdbaadcfcfa41828927036" data-background-opacity="0.2">
+            <h1 class="chapter">好友</h1>
+            {% set f = friend.top[0] %}
+            <p class="intro">你最要好的朋友是
+              <img class="top" alt="{{ f.name }}" src="{{ f.headimg }}">
+            </p>
+            <p>在有联络的<span class="number">{{ f.days }}</span>天中</p>
+            <p>你们共通信<span class="number">{{ f.messages }}</span>条</p>
+            <p>小纸条连起来长达<span class="number">{{ "{:.0f}".format(f.messages * 0.2) }}</span>米</p>
+            <br>
+            <blockquote>陪伴是最长情的告白</blockquote>
+          </section>
+
+          <section data-background-image="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm134-kul-08_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1400&s=617a128447cdbaadcfcfa41828927036" data-background-opacity="0.2">
+            <h1 class="chapter">好友</h1>
+            <p class="intro">以及这些常聊朋友</p>
+            {% for f in friend.top[1:] %}
+            <p class="top"><img class="inline" alt="{{ f.name }}" src="{{ f.headimg }}"> 联络{{ f.days }}天，通信{{ f.messages }}条</p>
+            {% endfor %}
+            <br>
+          </section>
+          
+          <section data-background-image="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm134-kul-08_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1400&s=617a128447cdbaadcfcfa41828927036" data-background-opacity="0.2">
+            <h1 class="chapter">群聊</h1>
+            {% set g = group.top[0] %}
+            <p class="intro">你最活跃的群聊是</p>
+            <p class="top">{{ g.name }}</p>
+            <p>你在其中发送消息<span class="number">{{ g.send }}</span>条</p>
+            <p>群聊共产生消息<span class="number">{{ g.messages }}</span>条</p>
+            <p>近似举办了<span class="number">{{ "{:.0f}".format(g.messages / 800) }}</span>场辩论</p>
+            <br>
+            <blockquote>赛博空间，会议不绝</blockquote>
+          </section>
+
+          <section data-background-image="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm134-kul-08_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1400&s=617a128447cdbaadcfcfa41828927036" data-background-opacity="0.2">
+            <h1 class="chapter">群聊</h1>
+            <p class="intro">以及这些活跃群聊</p>
+            {% for g in group.top[1:] %}
+            <p class="top">{{ g.name }}： {{ g.send }} / {{ g.messages }}</p>
+            {% endfor %}
+            <br>
+            <blockquote>你贡献消息数 / 群聊总消息数</blockquote>
+          </section>
+          
+          <section data-background-image="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm134-kul-08_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1400&s=617a128447cdbaadcfcfa41828927036" data-background-opacity="0.2">
+            <h1 class="chapter">碎片</h1>
+            <p class="intro">还记得这些消息吗</p>
+            {% for m in message_clip %}
+            <p class="top"><span class="message">{{ m }}</span></p>
+            {% endfor %}
+            <br>
+            <blockquote>彼情彼景，犹在心头？</blockquote>
+          </section>
+          
+          <section data-background-image="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v760-toon-53_3_0.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=c44e033467654f9344de1cb2b0b26b88" data-background-opacity="0.3">
+            <h1 class="chapter">再会</h1>
+            <br>
+            <br>
+            <p class="top">回顾，是为了更好向前</p>
+            <p class="top">新的一年，健康喜乐</p>
+            <br>
+            <br>
+            <blockquote><a href="https://space.bilibili.com/3461571646851096">万能の十一</a>出品，感谢使用</blockquote>
+          </section>
+        </section>
+			</div>
+		</div>
+
+		<script src="static/reveal.js"></script>
+		<script>
+			Reveal.initialize({
+        mouseWheel: true,
+        width: "100%",
+        height: "100%",
+        controls: false,
+        progress: false
+			});
+		</script>
+	</body>
+</html>

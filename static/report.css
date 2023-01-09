@@ -1,0 +1,111 @@
+.slides * {
+    text-align: center;
+}
+
+.slides p {
+    /* text-indent: 2em; */
+    font-size: large;
+    color: #ccc;
+}
+
+.slides .chapter {
+    opacity: 0.1;
+    text-align: right;
+}
+
+.slides p.intro {
+    text-align: left;
+    text-indent: 0.5em;
+    margin: 2em 0;
+}
+
+.slides .hint * {
+    width: 100%;
+    text-indent: 0;
+    text-align: center;
+    opacity: 0.5;
+    font-size: small;
+}
+
+@keyframes arrow {
+    0%,100% {
+      bottom: 0.8em;
+    }
+    50% {
+      bottom: 1.2em;
+    }
+}
+
+.slides .hint::after {
+    content: "";
+    position: absolute;
+    bottom: 0.8em;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    transform: rotate(45deg);
+    animation: 3s arrow infinite ease;
+}
+
+.slides .number {
+    font-size: 2em;
+    color: #fff;
+    margin: 0 0.2em;
+}
+
+.slides img.top {
+    vertical-align: top;
+    height: 4em;
+    margin: 0 1em;
+}
+
+.slides p.top {
+    margin: 2em 0;
+    text-align: center;
+    text-indent: 0;
+    color: #eee;
+}
+
+.slides img.inline {
+    vertical-align: middle;
+    max-height: 2.5em;
+    max-width: 2.5em;
+    margin: 0 0.2em;
+}
+
+.slides blockquote {
+    text-align: left;
+    font-size: medium;
+    font-style: normal;
+    width: auto;
+    background: none;
+    color: #ccc;
+}
+
+.slides blockquote::before {
+    content: "\201C";
+    font-size: 3em;
+}
+
+/* .slides blockquote::after {
+    content: "\201D";
+    font-size: 2em;
+} */
+
+.slides .message {
+    background-color: #fff;
+    color: #111;
+    padding: 0.3em;
+    border-radius: 5px;
+}
+
+.reveal .footer {
+    position: absolute;
+    bottom: 0%;
+    font-size: small;
+    opacity: 0.5;
+}
