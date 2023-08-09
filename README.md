@@ -1,4 +1,4 @@
-# WeChat-Annual
+# WxAnnual
 
 微信年度报告：The missing annual report of WeChat
 

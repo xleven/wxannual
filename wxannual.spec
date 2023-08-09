@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['wechat-annual.py'],
+    ['wxannual.py'],
     pathex=[],
     binaries=[],
     datas=[('static', 'static')],
@@ -28,7 +28,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='WeChat Annual',
+    name='WxAnnual',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -46,7 +46,7 @@ exe = EXE(
 
 app = BUNDLE(
     exe,
-    name='WeChat Annual.app',
+    name='WxAnnual.app',
     icon='static/favicon.ico',
     bundle_identifier=None,
 )
